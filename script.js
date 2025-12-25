@@ -34,7 +34,7 @@ imageInput.addEventListener('change', (e) => {
     reader.readAsDataURL(file);
 });
 
-// 投稿機能
+// 投稿
 postBtn.addEventListener('click', async () => {
     const title = document.getElementById('hack-title').value;
     const content = document.getElementById('hack-content').value;
@@ -86,7 +86,7 @@ function render(snapshot) {
     });
 }
 
-// 絞り込みボタン
+// 絞り込み
 const filterButtons = document.querySelectorAll('.filter-btn');
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -97,7 +97,7 @@ filterButtons.forEach(btn => {
     });
 });
 
-// リアルタイム監視
+// 監視
 onSnapshot(query(collection(db, "hacks"), orderBy("createdAt", "desc")), (snapshot) => {
     latestSnapshot = snapshot;
     render(snapshot);
