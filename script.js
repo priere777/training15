@@ -20,9 +20,9 @@ const previewArea = document.getElementById('image-preview');
 
 let selectedImageData = "";
 let currentFilter = "all";
-let latestSnapshot = null; // 取得したデータを一時保存する場所
+let latestSnapshot = null;
 
-// 1. 画像プレビュー表示
+// 画像プレビュー
 imageInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (!file) return;
@@ -34,7 +34,7 @@ imageInput.addEventListener('change', (e) => {
     reader.readAsDataURL(file);
 });
 
-// 2. 投稿機能
+// 投稿機能
 postBtn.addEventListener('click', async () => {
     const title = document.getElementById('hack-title').value;
     const content = document.getElementById('hack-content').value;
@@ -54,14 +54,13 @@ postBtn.addEventListener('click', async () => {
     }
 });
 
-// 3. 描画処理（共通関数）
+// 描画
 function render(snapshot) {
     hackList.innerHTML = "";
     snapshot.forEach((snapshotDoc) => {
         const data = snapshotDoc.data();
         const id = snapshotDoc.id;
 
-        // 絞り込み判定
         if (currentFilter !== "all" && data.category !== currentFilter) return;
 
         const card = document.createElement('div');
@@ -82,32 +81,29 @@ function render(snapshot) {
         `;
         hackList.appendChild(card);
 
-        // イベント登録
         document.getElementById(`like-${id}`).onclick = () => updateDoc(doc(db, "hacks", id), { likes: increment(1) });
         document.getElementById(`del-${id}`).onclick = () => confirm("削除しますか？") && deleteDoc(doc(db, "hacks", id));
     });
 }
 
-// 4. 絞り込みボタンのイベント設定
+// 絞り込みボタン
 const filterButtons = document.querySelectorAll('.filter-btn');
 filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
         filterButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentFilter = btn.getAttribute('data-category');
-        
-        // データを再描画
         if (latestSnapshot) render(latestSnapshot);
     });
 });
 
-// 5. リアルタイム監視
+// リアルタイム監視
 onSnapshot(query(collection(db, "hacks"), orderBy("createdAt", "desc")), (snapshot) => {
-    latestSnapshot = snapshot; // データをキャッシュする
+    latestSnapshot = snapshot;
     render(snapshot);
 });
 
-// 6. モーダル処理
+// モーダル
 window.openModal = (src) => {
     const modal = document.getElementById('image-modal');
     document.getElementById('full-image').src = src;
