@@ -13,18 +13,8 @@ body {
 .container { width: 100%; max-width: 800px; }
 
 header { text-align: left; color: white; margin-bottom: 30px; }
-
-/* 画像のような白いアイコンをCSSで再現 */
-.logo-icon {
-    width: 40px;
-    height: 45px;
-    background-color: white;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    margin-bottom: 15px;
-}
-
-header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; }
-header p { opacity: 0.9; margin: 5px 0; font-size: 0.9rem; }
+header h1 { margin: 0; font-size: 2.5rem; font-weight: 800; letter-spacing: -0.5px; }
+header p { opacity: 0.9; margin: 5px 0; font-size: 0.95rem; }
 
 /* 投稿ボックス */
 .post-box {
