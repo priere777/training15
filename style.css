@@ -13,9 +13,18 @@ body {
 .container { width: 100%; max-width: 800px; }
 
 header { text-align: left; color: white; margin-bottom: 30px; }
-.logo { font-size: 3rem; margin-bottom: 10px; }
-header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; }
-header p { opacity: 0.9; margin: 5px 0; }
+
+/* 画像のような白いアイコンをCSSで再現 */
+.logo-icon {
+    width: 40px;
+    height: 45px;
+    background-color: white;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    margin-bottom: 15px;
+}
+
+header h1 { margin: 0; font-size: 2.2rem; font-weight: 800; letter-spacing: -0.5px; }
+header p { opacity: 0.9; margin: 5px 0; font-size: 0.9rem; }
 
 /* 投稿ボックス */
 .post-box {
@@ -30,11 +39,11 @@ header p { opacity: 0.9; margin: 5px 0; }
 }
 
 input, textarea, select {
-    border: 1px solid #f0f0f0;
-    background: #f9f9f9;
+    border: 1px solid #f2f2f2;
+    background: #fdfdfd;
     padding: 12px;
     border-radius: 8px;
-    font-size: 16px;
+    font-size: 15px;
     outline: none;
 }
 
@@ -42,8 +51,8 @@ input, textarea, select {
 .left-tools { display: flex; gap: 10px; }
 
 .image-upload-btn {
-    background: #eef2ff;
-    color: #6366f1;
+    background: #f0f3ff;
+    color: #5a67d8;
     padding: 8px 15px;
     border-radius: 8px;
     cursor: pointer;
@@ -66,21 +75,21 @@ input, textarea, select {
 .filter-bar {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 30px;
     flex-wrap: wrap;
 }
 
 .filter-btn {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     color: white;
-    padding: 8px 18px;
+    padding: 6px 16px;
     border-radius: 20px;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
-    transition: all 0.3s;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.2s;
 }
 
 .filter-btn.active {
@@ -103,14 +112,13 @@ input, textarea, select {
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
 }
 
 .card-left { flex: 1; padding-right: 15px; text-align: left; }
 
 .category-tag {
     font-size: 0.7rem;
-    background: #f0f4f8;
+    background: #f4f7ff;
     color: #5a67d8;
     padding: 3px 10px;
     border-radius: 10px;
