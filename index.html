@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeStack - ライフハック共有</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🏠</div>
+            <h1>LifeStack</h1>
+            <p>日常を少しだけ便利にする知恵</p>
+        </header>
+
+        <div class="post-box">
+            <input type="text" id="hack-title" placeholder="タイトルの入力...">
+            <textarea id="hack-content" placeholder="方法やコツを教えてください..."></textarea>
+            
+            <div id="image-preview" class="preview-area"></div>
+
+            <div class="post-footer">
+                <div class="left-tools">
+                    <select id="hack-category">
+                        <option value="🏠 家事">🏠 家事</option>
+                        <option value="💻 仕事">💻 仕事</option>
+                        <option value="🧘 健康">🧘 健康</option>
+                        <option value="💄 美容">💄 美容</option>
+                        <option value="💡 その他">💡 その他</option>
+                    </select>
+                    
+                    <label class="image-upload-btn">
+                        <span>+ 📷</span>
+                        <input type="file" id="hack-image" accept="image/*" style="display:none;">
+                    </label>
+                </div>
+                
+                <button id="post-btn">投稿する</button>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <button class="filter-btn active" data-category="all">すべて</button>
+            <button class="filter-btn" data-category="🏠 家事">🏠 家事</button>
+            <button class="filter-btn" data-category="💻 仕事">💻 仕事</button>
+            <button class="filter-btn" data-category="🧘 健康">🧘 健康</button>
+            <button class="filter-btn" data-category="💄 美容">💄 美容</button>
+            <button class="filter-btn" data-category="💡 その他">💡 その他</button>
+        </div>
+
+        <div id="hack-list" class="hack-grid"></div>
+    </div>
+
+    <div id="image-modal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="full-image">
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
